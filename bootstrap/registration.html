@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" >
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <title>Registration</title>
+    <link rel="stylesheet"  href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+   <style>
+p {font-family:, Times, serif; font-size: 14px; color: darkslateblue; word-wrap: break-word; width: 100%}
+h1 { font-family: "Ariel", monospace; font-size: 35px; color:#CD5C5C; width: 100%; text-shadow: 2px 2px 5px    pink; text-align: center;}
+ h2 { font-family: "Ariel", monospace; font-size: 25px; color:#CD5C5C; width: 100%; text-shadow: 2px 2px 5px    pink}
+li { font-family:fantasy, "Ariel"; color:midnightblue; font-size: 15px }
+img {border-radius: 50%;}
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box}
+
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+
+button:hover {
+    opacity:1;
+}
+
+
+.cancelbtn {
+    padding: 14px 20px;
+    background-color: #f44336;
+}
+
+
+.cancelbtn, .signupbtn {
+  float: left;
+  width: 50%;
+}
+
+
+.container {
+    padding: 16px;
+}
+
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+
+
+       
+    
+}
+       @media (max-width: @screen-xs-max) { 
+            p {font-family:, Times, serif; font-size: 5; color: darkslateblue; word-wrap: break-word; width: 100%
+           }
+        
+            h1 { font-family: "Ariel", monospace; font-size: 7px; color:#CD5C5C; width: 100%; text-shadow: 2px 2px 5px pink; text-align: center;}
+        
+            h2 { font-family: "Ariel", monospace; font-size: 6px; color:#CD5C5C; width: 100%; text-shadow: 2px 2px 5px pink}
+        
+            li { font-family:fantasy, "Ariel"; color:midnightblue; font-size: 6px }
+        
+              .cancelbtn, .signupbtn {
+       width: 100%; }
+    
+        @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+             p {font-family:, Times, serif; font-size: 6; color: darkslateblue; word-wrap: break-word; width: 100%}
+        
+            h1 { font-family: "Ariel", monospace; font-size: 8px; color:#CD5C5C; width: 100%; text-shadow: 2px 2px 5px pink; text-align: center;}
+        
+            h2 { font-family: "Ariel", monospace; font-size: 7px; color:#CD5C5C; width: 100%; text-shadow: 2px 2px 5px pink}
+        
+            li { font-family:fantasy, "Ariel"; color:midnightblue; font-size: 7px }
+        }
+    
+        @media (min-width: @screen-md-min) and (max-width: @screen-md-max) { 
+            p {font-family:, Times, serif; font-size: 14px; color: darkslateblue; word-wrap: break-word; width: 100%}
+        
+            h1 { font-family: "Ariel", monospace; font-size: 35px; color:#CD5C5C; width: 100%; text-shadow: 2px 2px 5px pink; text-align: center;}
+        
+            h2 { font-family: "Ariel", monospace; font-size: 25px; color:#CD5C5C; width: 100%; text-shadow: 2px 2px 5px pink}
+       
+            li { font-family:fantasy, "Ariel"; color:midnightblue; font-size: 15px }}
+    
+        @media (min-width: @screen-lg-min) {
+            p {font-family:, Times, serif; font-size: 17px; color: darkslateblue; word-wrap: break-word; width: 100%}
+        
+            h1 { font-family: "Ariel", monospace; font-size: 40px; color:#CD5C5C; width: 100%; text-shadow: 2px 2px 5px pink; text-align: center;}
+        
+            h2 { font-family: "Ariel", monospace; font-size: 32px; color:#CD5C5C; width: 100%; text-shadow: 2px 2px 5px pink}
+       
+            li { font-family:fantasy, "Ariel"; color:midnightblue; font-size: 18px }}
+    
+    </style>
+    
+   </head>
+    
+   
+  
+    <body background="cizgi.png">
+    <div class="container-fluid"><div class="row">
+        
+     <script src="bootstrap/js/tests/vendor/jquery-1.9.1.min.js"></script>
+   <script src="bootstrap/js/bootstrap.js"></script>   
+            
+    <nav class="navbar navbar-light" class="navbar navbar-light" style="background-color:pink;">
+    	<div class="container-fluid">
+
+	
+    		<div class="navbar-header">
+    			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main_navbar" aria-expanded="false"><li>MENU</li></button>
+    		</div>
+
+		
+    		<div class="collapse navbar-collapse" id="main_navbar">
+        		<ul class="nav navbar-nav">
+          			<li> <a href="home.html">Home</a></li>
+          			<li> <a href="localdishes.html">Local Dishes</a></li>
+                    <li> <a href="historicalplaces.html">Historical Places</a></li>
+                    <li> <a href="usefullinks.html">Useful Links</a></li>
+                    <li> <a href="aboutme.html">About Me</a></li>
+                    <li> <a href="contactme.html">Contact Me</a></li>
+                    <li class="active" style="background-color: palevioletred"> <a href="registration.html">Registration</a></li>
+                    
+        		</ul>
+        	</div> 
+
+      	</div>
+    </nav>
+
+
+    <div class="container">
+    
+    </div>
+  
+    
+    <script src="bootstrap/js/jquery.min.js"></script> 
+ 
+    <script src="bootstrap/js/bootstrap.min.js"></script> 
+        
+     
+    
+    
+      
+    
+     </div></div>
+        
+    <div class="container-fluid">
+<form  action="successful.html" style="border:1px solid #ccc ; background-color:white">
+  <div class="container" style="background-color:white">
+    <h1>Registration</h1>
+    <p>Please fill in this form to create an account.</p>
+    <hr>
+
+      
+      <label for="name"><b>Firstname</b></label>
+    <input type="text" placeholder="Enter Firstname" name="firstname" required>
+    <label for="name"><b>Lastname</b></label>
+    <input type="text" placeholder="Enter Lastname" name="lastname" required>  
+    
+      <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="example@domain.com" name="email" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+
+    <label for="psw-repeat"><b>Repeat Password</b></label>
+    <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+      
+      <label for="birthday"><b>Birthday</b></label>
+    <p><input type="date" placeholder="Enter Birthday" name="birthday" required>
+    
+      
+     <p> <label for="gender"><b>Gender</b></label>
+     <p> <select class="select-style gender" name="gender">
+
+           <option value="select">i am..</option>
+
+            <option value="m">Male</option>
+          <option value="f">Female</option></select>
+ 
+    		<p>Interest</p>
+			<p><input type="checkbox" name="Swim" 
+             value="yes">Swim</input></p>
+			 <p><input type="checkbox" name="Code" 
+             value="yes">Code</input></p>
+			 <p><input type="checkbox" name="Football" 
+             value="yes">Football</input></p>
+			 <p><input type="checkbox" name="Video Games" 
+             value="yes">Video Games</input></p>
+			 <p><input type="checkbox" name="Films" 
+             value="yes">Films</input></p>
+			 <p><input type="checkbox" name="Books" 
+             value="yes">Books</input></p>
+			 <p><input type="checkbox" name="Etc" 
+             value="yes">Etc</input></p>
+    
+
+    
+      <div class="clearfix">
+      <button type="reset" class="cancelbtn" value="Reset">Reset</button>
+      <button type="submit" class="signupbtn" value="Submit">Submit</button>
+    </div>
+
+
+
+</form>
+
+        
+        
+        
+        
+           
+        
+     </div>
+    
+    
+ </body>
+    
+    
+    
+
+
+</html>
