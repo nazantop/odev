@@ -125,49 +125,59 @@ button:hover {
     </style>
     
     
-              <script>
-                function validateForm() {
-     
-                    
-    var textRegex = /^[A-Za-z]+$/;
-    var x = document.forms["myForm"]["firstname"].value;
-    var y = document.forms["myForm"]["lastname"].value;
-    var z = document.forms["myForm"]["email"].value;
-    var w = document.forms["myForm"]["pass1"].value;
-    
-    
-    if (x == "" || y == "" || z == ""|| w == "") 
-        alert("Some inputs are empty, check again.");
-   else if(!x.match(textRegex))
-            alert("Please enter only letters to the name field.");
-    else if(!y.match(textRegex))
-        alert("Please enter only letters to the surname field.");
-    else if ((w.length<6)||(w.length>15))
-        alert("Password length is not allowed");
-                    
-    else return true;
-                    
-return false;
-   
+    <script>
+        function validateForm() {
+            var textRegex = /^[A-Za-z]+$/;
+            var x = document.forms["myForm"]["firstname"].value;
+            var y = document.forms["myForm"]["lastname"].value;
+            var z = document.forms["myForm"]["email"].value;
+            var w = document.forms["myForm"]["pass1"].value;
+            var q = document.forms["myForm"]["birthday"].value;
+
+            function check(){
+                    var pass1=document.getElementById('pass_adr');
+                    var pass2=document.getElementById('pass_repeat');
+                    if(pass1.value!=pass2.value){
+                        alert("The two passwords must match!!")
+                        return false;
+                    }
                 }
+    
+    
+            if (x == "" || y == "" || z == ""|| w == "" || q == "") 
+                alert("Some inputs are empty, check again.");
+            else if(!x.match(textRegex))
+                    alert("Please enter only letters to the name field.");
+            else if(!y.match(textRegex))
+                alert("Please enter only letters to the surname field.");
+            else if ((w.length<6) || (w.length>15))
+                alert("Password length is not allowed");
+            else if(!ValidateEmail(z))
+                alert("Invalid email.");
+            else if(!ValidatePassword(w))
+                alert("Invalid password");
+            else if(!isValidDate2(q))
+                alert("Invalid Date");
+            else return true;
+                            
+            return false;
+        }
                   
     function ValidateEmail(email) 
 {
  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(myForm.email.value))
   {
-    return (true)
+    return (true);
   }
-    alert("You have entered an invalid email address!")
-    return (false)
+    return (false);
 }
        function ValidatePassword(pass1) 
 {
  if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&.])[A-Za-z\d$@$!%*?&.]/.test(myForm.pass1.value))
   {
-    return (true)
+    return (true);
   }
-    alert("You have entered an invalid password!")
-    return (false)
+    return (false);
 }               
                   
                   
@@ -175,28 +185,32 @@ return false;
                   
                   
              function isValidDate2(date) {
-  		var year = date.substring(6, 10);
-		var month = date.substring(3, 5);
-		var intMonth = parseInt(month);
-		var day = date.substring(0, 2);
+          		var year = date.substring(6, 10);
+        		var month = date.substring(3, 5);
+        		var intMonth = parseInt(month);
+        		var day = date.substring(0, 2);
 
-		var dateRegex = /^\d{2}([./-])\d{2}\1\d{4}$/;
+        		var dateRegex = /^\d{2}([./-])\d{2}\1\d{4}$/;
 
-		if((year < 1900 && year > 2018) || day > 31)
-			return false;
-		else if(!date.match(dateRegex))
-			return false;
-		else if(intMonth < 1 || intMonth > 12)
-			return false;
-		else if(!leapYear(parseInt(year)) && parseInt(month) == 2 && parseInt(day) > 28)
-			return false;
-		else if(!(intMonth == 1 || intMonth == 3 || intMonth == 5 || intMonth == 7 || intMonth == 8 || intMonth == 10 || intMonth == 12) &&
-		day > 30)
-			return false;
+        		if((year < 1900 && year > 2018) || day > 31)
+        			return false;
+        		else if(!date.match(dateRegex))
+        			return false;
+        		else if(intMonth < 1 || intMonth > 12)
+        			return false;
+        		else if(!isLeapYear(parseInt(year)) && parseInt(month) == 2 && parseInt(day) > 28)
+        			return false;
+        		else if(!(intMonth == 1 || intMonth == 3 || intMonth == 5 || intMonth == 7 || intMonth == 8 || intMonth == 10 || intMonth == 12) && day > 30)
+        			return false;
 
-		return true;
+		        return true;
 
              }
+
+             function isLeapYear(year)
+            {
+                return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
+            }
 
 
                   
@@ -224,17 +238,6 @@ return false;
     		<div class="navbar-header">
     			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main_navbar" aria-expanded="false"><li>MENU</li></button>
     		</div>
-
-            <script>
-                function check(){
-                    var pass1=document.getElementById('pass_adr');
-                    var pass2=document.getElementById('pass_repeat');
-                    if(pass1.value!=pass2.value){
-                        alert("The two passwords must match!!")
-                        return false;
-                    }
-                }
-            </script>
              
  
 		
@@ -272,7 +275,7 @@ return false;
      </div></div>
         
     <div class="container-fluid">
-<form  action="successful.html" onsubmit="return function isValidDate2(birthday)" onsubmit="return ValidatePassword(pass1) " onsubmit=" return ValidateEmail(email) " onsubmit="return validateForm()" name="myForm" style="border:1px solid #ccc ; background-color:white">
+<form  action="successful.html" onsubmit="return validateForm()" name="myForm" style="border:1px solid #ccc ; background-color:white">
   <div class="container" style="background-color:white">
     <h1>Registration</h1>
     <p>Please fill in this form to create an account.</p>
@@ -288,10 +291,10 @@ return false;
     <input type="text" placeholder="example@domain.com" name="email" >
 
     <label for="psw"><b>Password</b></label>
-    <input type="password" id="pass_adr" name="pass1" placeholder="Enter Password"  >
+    <input type="password" id="pass_adr" name="pass1" placeholder="Enter Password">
 
     <label for="psw-repeat"><b>Repeat Password</b></label>
-    <input type="password" id="pass_repeat" name="pass2" placeholder="Repeat Password" required onchange="return check()">
+    <input type="password" id="pass_repeat" name="pass2" placeholder="Repeat Password">
       
       <label for="birthday"><b>Birthday</b></label>
     <p><input type="text" placeholder="dd/mm/yyyy" name="birthday" >
@@ -325,7 +328,7 @@ return false;
     
       <div class="clearfix">
       <button type="reset" class="cancelbtn" value="Reset">Reset</button>
-      <button type="submit" class="signupbtn" value="Submit" onclick=" return function isValidDate2(birthday)" onclick="return ValidatePassword(pass1)  " onclick=" return ValidateEmail(email)" onclick="return check()" onclick="return validateForm()">Submit</button>
+      <button type="submit" class="signupbtn" value="Submit">Submit</button>
     </div>
 
 
