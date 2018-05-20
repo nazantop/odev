@@ -174,19 +174,27 @@ return false;
                   
                   
                   
-             function isValidDate2(birthday) {
-  var bits = birthday.value.split('/');
-  var y = bits[2],
-    m = bits[1],
-    d = bits[0];
-  // Assume not leap year by default (note zero index for Jan)
-  var daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-                 
+             function isValidDate2(date) {
+  		var year = date.substring(6, 10);
+		var month = date.substring(3, 5);
+		var intMonth = parseInt(month);
+		var day = date.substring(0, 2);
 
-  if ((!(y % 4) && y % 100) || !(y % 400)) {
-    daysInMonth[1] = 29;
-  }
-  return !(/\D/.test(String(d))) && d > 0 && d <= daysInMonth[--m]
+		var dateRegex = /^\d{2}([./-])\d{2}\1\d{4}$/;
+
+		if((year < 1900 && year > 2018) || day > 31)
+			return false;
+		else if(!date.match(dateRegex))
+			return false;
+		else if(intMonth < 1 || intMonth > 12)
+			return false;
+		else if(!leapYear(parseInt(year)) && parseInt(month) == 2 && parseInt(day) > 28)
+			return false;
+		else if(!(intMonth == 1 || intMonth == 3 || intMonth == 5 || intMonth == 7 || intMonth == 8 || intMonth == 10 || intMonth == 12) &&
+		day > 30)
+			return false;
+
+		return true;
 
              }
 
