@@ -7,6 +7,8 @@
     <title>About Me</title>
     <link rel="stylesheet"  href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+            <link rel="stylesheet" href="calculator.css" />
+
    <style>
         p {font-family:, Times, serif; font-size: 14px; color: darkslateblue; word-wrap: break-word; width: 100%}
         h1 { font-family: "Ariel", monospace; font-size: 35px; color:#CD5C5C; width: 100%; text-shadow: 2px 2px 5px pink; text-align: center;}
@@ -111,9 +113,123 @@
         
     <div class="container-fluid">
  
- <center><img src="successful.png" class="img-fluid" alt="Responsive image"  style="width:30%"></center>
-   <center><font color="green"><h2> Your registration is successful!</h2></font></center>
-
+ <center>
+            <div class="calculator">
+                <center> <input type="text" value="0" id="text" class="numbersbox" readonly> </center>
+                
+                <div>
+                    <input type="button" value="7" class="button" onclick="print(7)">
+                    <input type="button" value="8" class="button" onclick="print(8)">
+                    <input type="button" value="9" class="button" onclick="print(9)">
+                </div>
+                
+                <br>
+                
+                <div>
+                    <input type="button" value="4" class="button" onclick="print(4)">
+                    <input type="button" value="5" class="button" onclick="print(5)">
+                    <input type="button" value="6" class="button" onclick="print(6)">
+                </div>
+                
+                <br>
+                
+                <div>
+                    <input type="button" value="1" class="button" onclick="print(1)">
+                    <input type="button" value="2" class="button" onclick="print(2)">
+                    <input type="button" value="3" class="button" onclick="print(3)">
+                </div>
+                
+                <br>
+                
+                <div>
+                    <input type="button" value="0" class="button" onclick="print(0)">
+                    <input type="button" value="." class="button" onclick="appendDot()">
+                    <input type="button" value="/" class="button" onclick="divide()">
+                </div>
+                
+                <br>
+                
+                <div>
+                    <input type="button" value="+" class="button" onclick="add()">
+                    <input type="button" value="-" class="button" onclick="subtract()">
+                    <input type="button" value="*" class="button" onclick="multiply()">
+                </div>
+                
+                <br>
+                
+                <div>
+                    <input type="button" value="1/x" class="button" onclick="oneover()">
+					<input type="button" value="C"   class="button" onclick="reset()">
+                    <input type="button" value="="   class="button" onclick="equals()">
+                </div>
+            </div>
+        </center>
+		
+		<script>
+			var inputField = document.getElementById('text');
+			
+			function print(number) {
+				
+				inputField.value = inputField.value == "0" ? String(number): inputField.value + String(number);
+			}
+			
+			function appendDot() {
+				inputField.value += ".";
+			}
+			
+			function reset() {
+				inputField.value = "0";
+			}
+			
+			function add() {
+				if(inputField.value.includes("+")) {
+					return;
+				}
+				
+				inputField.value += " + ";
+			}
+			
+			function subtract() {
+				if(inputField.value.includes("-")) {
+					return;
+				}
+				
+				inputField.value += " - ";
+			}
+			
+			function multiply() {
+				if(inputField.value.includes("*")) {
+					return;
+				}
+				
+				inputField.value += " * ";
+			}
+			
+			function divide() {
+				if(inputField.value.includes("/")) {
+					return;
+				}
+				
+				inputField.value += " / ";
+			}
+			
+			function oneover() {
+				inputField.value = parseFloat(1 / inputField.value);
+			}
+			
+			function equals() {
+				if(inputField.value.includes("+")) {
+					inputField.value = String(parseFloat(inputField.value.split('+')[0].substr(0, inputField.value.split('+')[0].length)) + parseFloat(inputField.value.split('+')[1].substr(0, inputField.value.split('+')[1].length)));
+				} else if(inputField.value.includes("-")) {
+					inputField.value = String(parseFloat(inputField.value.split('-')[0].substr(0, inputField.value.split('-')[0].length)) - parseFloat(inputField.value.split('-')[1].substr(0, inputField.value.split('-')[1].length)));
+				} else if(inputField.value.includes("*")) {
+					inputField.value = String(parseFloat(inputField.value.split('*')[0].substr(0, inputField.value.split('*')[0].length)) * parseFloat(inputField.value.split('*')[1].substr(0, inputField.value.split('*')[1].length)));
+				} else if(inputField.value.includes("/")) {
+					inputField.value = String(parseFloat(inputField.value.split('/')[0].substr(0, inputField.value.split('/')[0].length)) / parseFloat(inputField.value.split('/')[1].substr(0, inputField.value.split('/')[1].length)));
+				}
+			}
+		</script>
+        
         
         
         
